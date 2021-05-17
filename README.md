@@ -3,7 +3,7 @@
 1. Download zip folder or clone the directory
 2. Zip folder has two directory
     - ClientApp (Angular)
-    - ClientApp (Angular)
+    - ServerApp (.NET Core API)
     
 3. ClientApp Installation steps:
     - Open command promt 
