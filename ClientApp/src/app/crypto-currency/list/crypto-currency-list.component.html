@@ -1,0 +1,23 @@
+<h1 id="tableLabel">List of Crypto Currencies</h1>
+<table class="table table-striped" aria-labelledby="tableLabel">
+  <thead>
+    <tr>
+      <th scope="col">Name </th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Current Price</th>
+    </tr>
+  </thead>
+  <tbody *ngIf="currency$">
+    <tr *ngFor="let coin of currency$.data.coins">
+      <td>
+        <span style="margin:5px">
+          <img class="card-img-top" style="width:16px; height:16px" [src]="coin.iconUrl" alt="No-image" />
+        </span>
+        <a [routerLink]="[coin.id]" style="align-content:center">{{coin.name}}</a>
+      </td>
+      <td>{{coin.symbol}}</td>
+      <td>{{coin.price|currency : currency$.data.base.symbol : 'symbol' : '1.2-2'}}</td>
+    </tr>
+  </tbody>
+</table>
+

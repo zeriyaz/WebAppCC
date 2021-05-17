@@ -1,0 +1,49 @@
+<div class="card">
+  <div class="accordion card card-header" style="display:inline-block; background-color:gainsboro;" id="headingOne">
+    <div style="width:90%;display:inline-block;text-align:left">
+      <img class="card-img-top" style="height: 24px;width: 24px;float: left;margin-top: 1px;margin-right: 5px" [src]="currency$?.data.coin.iconUrl" alt="No-image" />
+      <h5 class="mb-0">
+        {{currency$?.data.coin.name}} | {{currency$?.data.coin.symbol}}
+      </h5>
+    </div>
+    <div style="display: inline-block">
+      <a class="nav-link text-dark" [routerLink]="['/currency']">Back</a>
+    </div>
+  </div>
+  <div class="card-body" *ngIf="currency$">
+    <div class="card-body">
+      <p>
+        <span style="font-weight:bold">Price:</span>
+        {{currency$?.data.coin.price |currency: currency$?.data.base.symbol : 'symbol' : '1.2-2'}}
+      </p>
+      <p>
+        <span style="font-weight:bold">24-Hour Volume:</span>
+        {{currency$.data.coin.volume|number}}
+      </p>
+      <p>
+        <span style="font-weight:bold">$100:</span>
+        {{100/currency$?.data.coin.price|number:'1.0-8'}} coins
+      </p>
+      <p>
+        <span style="font-weight:bold">$250:</span>
+        {{250/currency$?.data.coin.price|number:'1.0-8'}} coins
+      </p>
+      <p>
+        <span style="font-weight:bold">$5000:</span>
+        {{5000/currency$?.data.coin.price|number:'1.0-8'}} coins
+      </p>
+    </div>
+    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordion" *ngIf="currency$">
+      <div class="underline"><h5>Description</h5></div>
+      <div class="card-body" [innerHTML]="currency$?.data.coin.description">
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .underline {
+    text-decoration: underline;
+    padding: 1.25rem
+  }
+</style>
